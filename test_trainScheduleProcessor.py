@@ -50,6 +50,35 @@ class TestTrainScheduleProcessor(unittest.TestCase):
         ]
         self.assertEqual(result,expected)
 
+    def test_shouldreturnTrueIsNumberTrainExistInList(self):
+        processor = TrainScheduleProcessor(self.actualCsv,self.plannedCsv)
+        mockSchedule = [
+            ["3F5V",	"EVE",	"2023-03-29T00:20:39+01:00"],
+            ["3F5V",	"WUM",	"2023-03-29T00:20:39+01:00"],
+            ["3F5V",	"QYT",	"2023-03-29T00:20:39+01:00"],
+            ["KNEV",	"QJJ",	"2023-03-29T00:20:39+01:00"],
+            ["YVBG",	"ZTK",	"2023-03-29T00:20:39+01:00"]
+        ]
 
+        self.assertEqual(True,processor.numberTrainExistInList("YVBG",mockSchedule))
+        self.assertEqual(False,processor.numberTrainExistInList("test",mockSchedule))
+
+    def test_shouldGetDestitaionOfTrain(self):
+        processor = TrainScheduleProcessor(self.actualCsv,self.plannedCsv)
+        mockSchedule = [
+            ["3F5V",	"EVE",	"2023-03-29T00:20:39+01:00"],
+            ["3F5V",	"WUM",	"2023-03-29T00:20:39+01:00"],
+            ["3F5V",	"QYT",	"2023-03-29T00:20:39+01:00"],
+            ["KNEV",	"QJJ",	"2023-03-29T00:20:39+01:00"],
+            ["YVBG",	"ZTK",	"2023-03-29T00:20:39+01:00"],
+            ["3F5V",	"HDK",	"2023-03-29T00:20:39+01:00"],
+            ["KNEV",	"QJ1",	"2023-03-29T00:20:39+01:00"],
+            ["YVBG",	"POR",	"2023-03-29T00:20:39+01:00"],
+        ]
+        listOfTrain = processor.getDestinationOfTrains(mockSchedule)
+        expected = [['3F5V', 'HDK', '2023-03-29T00:20:39+01:00'], ['KNEV', 'QJ1', '2023-03-29T00:20:39+01:00'], ['YVBG', 'POR', '2023-03-29T00:20:39+01:00']]
+        self.assertEqual(expected,listOfTrain)
+
+        
 if __name__ == '__main__':
     unittest.main()

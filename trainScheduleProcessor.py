@@ -48,6 +48,23 @@ class TrainScheduleProcessor:
         sortedList = sorted(list, key=lambda x: x[-1], reverse=True)
         return sortedList[:n]
 
+    def numberTrainExistInList(self,numberTrain,trainSchedule):
+        for row in trainSchedule:
+            if(row[0]==numberTrain):
+                return True
+        return False
+
+    def getDestinationOfTrains(self,listOfTrain):
+        destination = []
+        trainSchedule = []
+        for x in listOfTrain:
+            if not (self.numberTrainExistInList(x[0],trainSchedule)):
+                for y in listOfTrain:
+                    if(x[0]==y[0]):
+                        destinationProv = y
+                trainSchedule.append(destinationProv)
+        return trainSchedule
+
     def processSchedule(self,currentTrain,plannedTrain):
         outputTrainSchedule = []
         for current in currentTrain:
@@ -64,7 +81,8 @@ class TrainScheduleProcessor:
         actualCsv = self.getListFromCsv(self.actualCsv)
         plannedCsv =  self.getListFromCsv(self.plannedCsv)
         if(actualCsv and plannedCsv):
-            output = self.processSchedule(actualCsv,plannedCsv)
+            destinationOfTrains  = self.getDestinationOfTrains(actualCsv)
+            output = self.processSchedule(destinationOfTrains,plannedCsv)
             topNTrains =self.getTopNTrainsWithHighestDelays(5,output)
             topNTrains.insert(0,['Numero treno','destinazione', 'Ora pianificata', 'Ora Effettiva','Ritardo'])
             self.writeCsv(topNTrains)
