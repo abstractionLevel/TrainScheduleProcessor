@@ -33,5 +33,5 @@ SOLUZIONE:(metodo:writeCsv) - per la lettura dei csv, ho usato la funzione open(
 ===================================================================
 
 PYTHON: versione 3.12.1
-ESECUZIONE SCRIPT: posizionarsi nella cartella esercizio e digitare: python trainScheduleProcessor.py
-ESECUZIONE TEST: posizionarsi nella cartella esercizio e digitare: python test_trainScheduleProcessor.py
+ESECUZIONE SCRIPT: aprire il temrminale e posizionarsi nella cartella del test e digitare: python o python3 trainScheduleProcessor.py
+ESECUZIONE TEST: aprire il temrminale e posizionarsi nella cartella del test e digitare: python o python3 test_trainScheduleProcessor.py
