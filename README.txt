@@ -15,7 +15,7 @@ SOLUZIONE: (metodo:getListFromCsv)- per la lettura dei csv, ho usato la funzione
 reader del modulo csv che mi restituisce oggetto iterabile di tipo csv, il quale mi ha permesso di iterare attraverso le righe del file csv
 ==============
 PROBLEMA: prendere la destinazione dei treni
-SOLUZIONE: (metodo:getDestinationOfTrains) - sapendo che la destinazione di ogni treno si trova in ultima posizione in ordine cronologico, dalla lista originale mi sono preso per ogni
+SOLUZIONE: (metodo:getDestinationOfTrains) - sapendo che la destinazione di ogni treno si trova in ultima posizione in ordine cronologico. Quindi dalla lista originale mi sono preso per ogni
 treno l' ultimo elemeneto
 ==============
 PROBLEMA:Calcolo ritardo 
