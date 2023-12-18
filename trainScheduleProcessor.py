@@ -2,14 +2,6 @@ import os
 import csv
 from datetime import datetime
 
-# 1 - lettura csv (current,planned)
-# 2 - Calcolo ritardo
-    # 2a - current >  planned  = ritardo  (n)
-    # 2b - current <  planned  = ritardo  (-n)
-# 3 - sort list con il campo delay descrescente
-# 4 - prendo i primi 5
-# 5 - Scrittura csv (output) con colonna ritardo espresso in secondi
-
 class TrainScheduleProcessor:
 
     def __init__(self,actualCsv,plannedCsv):
